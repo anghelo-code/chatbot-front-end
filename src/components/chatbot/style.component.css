@@ -1,0 +1,35 @@
+.chatbot {
+  background-color: #2f3dc0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.chatbot-label {
+  cursor: pointer;
+}
+
+.chatbot-check {
+  display: none;
+}
+
+.chatbot-icon_close {
+  display: none;
+}
+
+.chatbot-check:checked~.chatbot-label .chatbot-icon_chat {
+  display: none;
+}
+
+.chatbot-check:checked~.chatbot-label .chatbot-icon_close {
+  display: block;
+}
