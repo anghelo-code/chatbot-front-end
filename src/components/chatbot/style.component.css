@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .chatbot {
   background-color: #2f3dc0;
   color: #fff;
@@ -32,4 +36,109 @@
 
 .chatbot-check:checked~.chatbot-label .chatbot-icon_close {
   display: block;
+}
+
+/* ****************************** chatbot body *********************************** */
+
+.chatbot-chat {
+  height: 380px;
+  width: 300px;
+  background-color: #fff;
+  position: fixed;
+  bottom: 70px;
+  right: 25px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.chatbot-head {
+  background-color: #2f3dc0;
+  position: relative;
+  height: 40px;
+  border-end-end-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0 10px;
+}
+
+.chatbot-body {
+  height: calc(100% - 90px);
+  background-color: #e5e7eb;
+  padding: 0 10px;
+  color: #000;
+  font-size: 14px;
+}
+
+.chatbot-body_user, .chatbot-body_bot {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.chatbot-body_user {
+  justify-content: flex-end;
+}
+
+.chatbot-body_user div {
+  background-color:  rgb(191 219 254);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.chatbot-body_bot {
+  justify-content: flex-start;
+}
+
+.chatbot-body_bot div {
+  background-color: rgb(209 213 219);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.chatbot-form {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px;
+}
+
+.chatbot-form_input {
+  height: 100%;
+  width: 80%;
+  padding: 0 15px;
+  border-radius: 20px;
+  background-color: #fff;
+  border: solid 1px #e5e7eb;
+  color: #000;
+}
+
+.chatbot-form_input:focus {
+  outline: none;
+}
+
+.chatbot-form_button {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #2f3dc0;
+  outline: none;
+}
+
+.chatbot-form_button:hover {
+  background-color: #273296;
+}
+
+.chatbot-form_button:focus {
+  outline: none;
 }
