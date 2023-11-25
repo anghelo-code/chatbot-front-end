@@ -1,45 +1,47 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faX, faCommentAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import './style.component.css';
+import { ChatbotButtom } from './ChatbotButtom';
 
 export const Chatbot = () => {
+  const [messages, setMessages] = useState([]);
+
+  const sendMessage = async (userMessage) => {
+    // Agregar el mensaje del usuario al estado
+    const newUserMessage = { type: 'user', message: userMessage };
+    setMessages(messages => [...messages, newUserMessage]);
+
+    try {
+      const response = await fetch('http://localhost/chatbot/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: userMessage })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const botResponse = await response.text();
+
+      const newBotMessage = { type: 'bot', message: botResponse };
+      setMessages(messages => [...messages, newBotMessage]);
+
+    } catch (error) {
+      console.error('Error al enviar el mensaje:', error);
+    }
+  };
+
   return (
     <span >
-      <div className="chatbot">
-        <input type="checkbox" id="checkbox" className='chatbot-check' />
-        <label htmlFor="checkbox" className='chatbot-label' >
-          <FontAwesomeIcon icon={ faCommentAlt } className='chatbot-icon_chat' />
-          <FontAwesomeIcon icon={ faX } className='chatbot-icon_close' />
-        </label>
-      </div>
-      
+      <ChatbotButtom />
+
       <div className="chatbot-chat">
-        <div className="chatbot-head">
-          chatbot
-        </div>
+        <ChatbotHead />      
 
-        <div className="chatbot-body">
-          <div className="chatbot-body_user">
-            <div>
-              Quien es el profesor Lauro ?
-            </div>
-          </div>
+        <ChatbotBody messages={ messages } />  
 
-          <div className="chatbot-body_bot">
-            <div>
-              El profesor Lauro es  ...
-            </div>
-          </div>
-        </div>
-
-        <div  className='chatbot-form'>
-          <input type="text"  className='chatbot-form_input' placeholder='Escribe tu mensaje' />
-          <button className='chatbot-form_button'>
-            <FontAwesomeIcon icon={ faArrowRight }   className='chatbot-form_icon'/>
-          </button>
-        </div>
-
+        <ChatbotForm setMessage={ sendMessage } />
       </div>
     </span>
   )
