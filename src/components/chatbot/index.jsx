@@ -1,5 +1,9 @@
 import './style.component.css';
+import { useState } from 'react';
 import { ChatbotButtom } from './ChatbotButtom';
+import { ChatbotHead } from './ChatbotHead';
+import { ChatbotBody } from './ChatbotBody';
+import { ChatbotForm } from './ChatbotForm';
 
 export const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -10,7 +14,7 @@ export const Chatbot = () => {
     setMessages(messages => [...messages, newUserMessage]);
 
     try {
-      const response = await fetch('http://localhost/chatbot/chat', {
+      const response = await fetch('http://localhost:8000/chatbot/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -22,9 +26,9 @@ export const Chatbot = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const botResponse = await response.text();
+      const botResponse = await response.json();
 
-      const newBotMessage = { type: 'bot', message: botResponse };
+      const newBotMessage = { type: 'bot', message: botResponse.response };
       setMessages(messages => [...messages, newBotMessage]);
 
     } catch (error) {
@@ -34,6 +38,7 @@ export const Chatbot = () => {
 
   return (
     <span >
+     <div className="chatbot">
       <ChatbotButtom />
 
       <div className="chatbot-chat">
@@ -43,6 +48,7 @@ export const Chatbot = () => {
 
         <ChatbotForm setMessage={ sendMessage } />
       </div>
+     </div>
     </span>
   )
 }

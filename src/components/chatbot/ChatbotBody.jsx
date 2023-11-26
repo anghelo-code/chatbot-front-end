@@ -1,9 +1,16 @@
 import { MessageBot } from "./MessageBot";
 import { MessageUser } from "./MessageUser";
+import { useEffect, useRef } from "react";
 
 export const ChatbotBody = ({ messages }) => {
+  const chatbotBody = useRef(null);
+
+  useEffect(() => {
+    chatbotBody.current.scrollTop = chatbotBody.current.scrollHeight;
+  }, [messages]);
+
   return (
-    <div className="chatbot-body">
+    <div className="chatbot-body" ref={ chatbotBody }>
       {messages.map((msg, index) => {
         switch (msg.type) {
           case 'user':
