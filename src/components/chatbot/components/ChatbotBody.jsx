@@ -1,4 +1,4 @@
-import { MessageBot, MessageUser } from "./";
+import { MessageBot, MessageUser } from "./Messages";
 import { useAutoScroll } from "../hooks/useAutoScroll";
 
 const messageComponents = {

@@ -38,6 +38,33 @@
   display: block;
 }
 
+/* ****************************** chatbot head ********************************** */
+.chatbot-head {
+  background-color: #2f3dc0;
+  position: relative;
+  height: 43px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  padding: 0 10px;
+}
+
+.chatbot_head_link {
+  color: #fff;
+}
+
+.chatbot-head_whatsapp {
+  color: #fff;
+  font-size: 25px;
+}
+
+.chatbot-head_x {
+  font-size: 18px;
+}
+
 /* ****************************** chatbot body *********************************** */
 
 .chatbot-chat {
@@ -58,18 +85,6 @@
   display: flex;
 }
 
-.chatbot-head {
-  background-color: #2f3dc0;
-  position: relative;
-  height: 40px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  padding: 0 10px;
-}
 
 .chatbot-body {
   height: calc(100% - 90px);
@@ -80,7 +95,8 @@
   overflow-y: auto;
 }
 
-.chatbot-body_user, .chatbot-body_bot {
+.chatbot-body_user,
+.chatbot-body_bot {
   margin: 10px 0;
   display: flex;
   align-items: center;
@@ -92,7 +108,7 @@
 }
 
 .chatbot-body_user div {
-  background-color:  rgb(191 219 254);
+  background-color: rgb(191 219 254);
   padding: 5px 10px;
   border-radius: 5px;
   max-width: 85%;
@@ -111,6 +127,7 @@
   text-align: start;
 }
 
+/* ************************************ chatbot form ********************************* */
 .chatbot-form {
   height: 55px;
   display: flex;
